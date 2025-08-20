@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting to AMAI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -15,154 +14,118 @@
         
         body {
             background: linear-gradient(135deg, #7500d1 0%, #4a00e0 100%);
-            color: white;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            color: white;
             text-align: center;
-            padding: 20px;
+            cursor: pointer;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 90%;
+            padding: 30px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto 20px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border-radius: 25px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
         }
         
-        .logo span {
-            font-size: 40px;
-            font-weight: bold;
-            color: #7500d1;
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         h1 {
-            font-size: 28px;
+            font-size: 2.5rem;
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
             opacity: 0.9;
-            line-height: 1.5;
+            max-width: 400px;
         }
         
-        .redirect-button {
+        .button {
             display: inline-block;
             background: white;
             color: #7500d1;
-            padding: 15px 30px;
+            padding: 14px 35px;
             border-radius: 50px;
-            text-decoration: none;
             font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            text-decoration: none;
+            margin-top: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .redirect-button:hover {
+        .button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .redirect-button:active {
-            transform: translateY(0);
-        }
-        
-        .countdown {
-            font-size: 16px;
+        .hint {
             margin-top: 25px;
-            opacity: 0.8;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            margin: 20px auto;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
         
         @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
             h1 {
-                font-size: 24px;
+                font-size: 2rem;
             }
             
             p {
-                font-size: 16px;
+                font-size: 1rem;
             }
             
-            .redirect-button {
-                padding: 12px 25px;
-                font-size: 16px;
+            .button {
+                padding: 12px 30px;
             }
         }
     </style>
 </head>
-<body>
+<body onclick="redirect()">
     <div class="container">
         <div class="logo">
-            <span>A</span>
+            <img src="https://cdn.durable.co/blocks/6eRsjLRjwqxJwdLo05M4SjKNxAAQ7HANZVv5Aop4aEWPn50ZiXeKqP1g4Vgtk3Bp.png" alt="AMAI Logo">
         </div>
         
-        <h1>Welcome to AMAI</h1>
-        <p>You are being redirected to our application. If you are not redirected automatically, please click the button below.</p>
+        <h1>AMAI</h1>
+        <p>Your Limitless Community Awaits</p>
+        <p>Click anywhere to continue to the app</p>
         
-        <div class="spinner"></div>
+        <a href="https://amai8.glide.page/dl/0319de" class="button">Go Now</a>
         
-        <a href="https://amai8.glide.page/dl/433228" class="redirect-button">
-            Go to AMAI Now <i class="fas fa-arrow-right"></i>
-        </a>
-        
-        <div class="countdown">Redirecting in <span id="count">3</span> seconds...</div>
+        <p class="hint">You will be redirected immediately on click</p>
     </div>
 
     <script>
-        // Immediate redirect
-        window.location.href = "https://amai8.glide.page/dl/0319de";
+        function redirect() {
+            window.location.href = "https://amai8.glide.page/dl/0319de";
+        }
         
-        // Fallback countdown
-        let seconds = 3;
-        const countElement = document.getElementById('count');
-        
-        const countdown = setInterval(() => {
-            seconds--;
-            countElement.textContent = seconds;
-            
-            if (seconds <= 0) {
-                clearInterval(countdown);
-            }
-        }, 1000);
+        // Optional: Redirect automatically after 8 seconds if no interaction
+        setTimeout(function() {
+            window.location.href = "https://amai8.glide.page/dl/0319de";
+        }, 8000);
     </script>
 </body>
 </html>
